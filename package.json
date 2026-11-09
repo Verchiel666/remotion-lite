@@ -4,7 +4,7 @@
   "description": "Programmatic video without a browser: Remotion's authoring layer + a CanvasKit(Skia/WASM) renderer + ffmpeg. Runs on Android, Linux, macOS.",
   "type": "module",
   "bin": {
-    "remolite": "./bin/remolite.mjs"
+    "remolite": "bin/remolite.mjs"
   },
   "files": [
     "bin/",

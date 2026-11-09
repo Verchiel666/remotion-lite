@@ -1,0 +1,38 @@
+# 用 npm 的 trusted publishing（OIDC）发版：不需要任何 token，也不需要 2FA。
+# 前置（一次性，在网页上做）：npmjs.com → 包 → Settings → Trusted Publisher
+#   选 GitHub Actions，填：owner=Verchiel666  repo=remotion-lite  workflow=publish.yml
+# 之后只要推一个 v* tag，就自动发布并带 provenance。
+name: publish
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write # 关键：OIDC 取令牌靠它
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      # 本包没有 lockfile，用 install 而不是 ci
+      - run: npm install --no-audit --no-fund --ignore-scripts
+
+      # 冒烟：用发布物自己的 CLI 渲染两帧，确保发出去的包是能跑的，不是"装上了敲不出命令"
+      - name: smoke test
+        run: |
+          node bin/remolite.mjs info src/videos/test.mjs
+          node bin/remolite.mjs still src/videos/test.mjs --frame 30 --out out/smoke.png
+          test -s out/smoke.png
+
+      - name: publish
+        run: npm publish --provenance --access public
