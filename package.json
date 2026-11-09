@@ -1,0 +1,48 @@
+{
+  "name": "remotion-lite",
+  "version": "0.1.0",
+  "description": "Programmatic video without a browser: Remotion's authoring layer + a CanvasKit(Skia/WASM) renderer + ffmpeg. Runs on Android, Linux, macOS.",
+  "type": "module",
+  "bin": {
+    "remolite": "./bin/remolite.mjs"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "tools-music.mjs",
+    "tools-mux.mjs",
+    "tools-frames.mjs",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "remotion",
+    "video",
+    "programmatic-video",
+    "motion-graphics",
+    "renderer",
+    "canvaskit",
+    "skia",
+    "wasm",
+    "ffmpeg",
+    "android"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "canvaskit-wasm": "^0.42.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "^4.0.542"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Verchiel666/remotion-lite.git"
+  },
+  "homepage": "https://github.com/Verchiel666/remotion-lite#readme",
+  "bugs": {
+    "url": "https://github.com/Verchiel666/remotion-lite/issues"
+  }
+}
