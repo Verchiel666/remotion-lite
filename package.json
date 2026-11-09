@@ -1,6 +1,6 @@
 {
   "name": "remotion-lite",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Programmatic video without a browser: Remotion's authoring layer + a CanvasKit(Skia/WASM) renderer + ffmpeg. Runs on Android, Linux, macOS.",
   "type": "module",
   "bin": {
